@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ItemsDefinition xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Object Class="Controllers.Ports.Protocol, Controllers">
+		<TypeID>MBusValtec</TypeID>
+		<DriverID>51</DriverID>
+		<Name>MBus Драйвер для Valtec VHM-T</Name>
+		<Category>MBusValtec</Category>
+		<SupportedParent Kind="Port" TypeID="RS232"/>
+		<InstanceClass>Controllers.Ports.ProtocolUserDriver, Controllers</InstanceClass>
+		<Property PropID="1" Name="Таймаут (мс)" Type="int" DefaultValue="2000" />
+	</Object>
+		
+	<Object Class="Controllers.ModuleTypes.FreeModuleType, Controllers">
+		<TypeID>TCounter</TypeID>
+		<Name>Счетчик Valtec VHM-T</Name>
+		<InstanceClass>Controllers.ModuleTypes.DerivedTypes.UserModuleInstance, Controllers</InstanceClass>
+		<SupportedParent Kind="Port" Category="MBusValtec"/>
+		<Description>Опрос теплосчётчика Valtec VHM-T</Description>
+		<Property PropID="1"  Name="Таймаут (мс)"	Type="int" DefaultValue="2000" />
+		<Map>
+			<Items>
+				<Group ID="1" Name="Целые">
+					<Items>
+						<Pin Index="0" Name="Адрес" Type="Целый" />
+						<Pin Index="1" Name="Резерв 1" Type="Целый" />
+						<Pin Index="2" Name="Резерв 2" Type="Целый" />
+					</Items>
+				</Group>
+				<Group ID="2" Name="Команды">
+					<Items>
+						<Pin Index="0" Name="Запрос" Type="Логический" />
+						<Pin Index="1" Name="Резерв 1" Type="Логический" />
+						<Pin Index="2" Name="Резерв 2" Type="Логический" />
+					</Items>
+				</Group>
+				<Group ID="3" Name="Результаты">
+					<Items>
+						<Pout Index="0" Name="S_Numb" Type="Целый" />
+						<Pout Index="1" Name="М_калорий" Type="Целый" />
+						<Pout Index="2" Name="Объем" Type="Целый" />
+						<Pout Index="3" Name="Прямая темп" Type="Целый" />
+						<Pout Index="4" Name="Обратная темп" Type="Целый" />
+						<Pout Index="5" Name="К_Кал_ч" Type="Целый" />
+						<Pout Index="6" Name="Поток м3_ч" Type="Целый" />
+						<Pout Index="7" Name="Наработка ч" Type="Целый" />
+						<Pout Index="8" Name="Резерв 1" Type="Целый" />
+						<Pout Index="9" Name="Резерв 2" Type="Целый" />
+						<Pout Index="10" Name="Резерв 3" Type="Целый" />
+					</Items>
+				</Group>
+				<Group ID="4" Name="Флаги">
+					<Items>
+						<Pout Index="0" Name="Активный цикл" Type="Логический" />
+						<Pout Index="1" Name="Устройство ответило" Type="Логический" />
+						<Pout Index="2" Name="Резерв 1" Type="Логический" />
+						<Pout Index="3" Name="Резерв 2" Type="Логический" />
+					</Items>
+				</Group>
+			</Items>
+		</Map>
+	</Object>
+</ItemsDefinition>
